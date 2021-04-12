@@ -18,4 +18,4 @@ development, and a full API reference.
 
 ## Images of project
 
-![alt text|512x397](https://github.com/alexandreturial/JogoDaVelha/blob/main/assets/image1.png?raw=true )
+![alt text|231x440, 20%](https://github.com/alexandreturial/JogoDaVelha/blob/main/assets/image1.png?raw=true )
