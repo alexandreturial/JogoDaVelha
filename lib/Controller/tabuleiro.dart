@@ -27,37 +27,50 @@ abstract class _TabuleiroBase with Store {
   @observable
   Player player1 = new Player();
   
-
   @observable
   Player player2 = new Player();
-  
 
+  @observable
+  String winner;
+  
   //IsAWin
   @observable
   bool isWin = false;
 
   @action
   nextMove(int index){
-    
-    if( _counter % 2 != 0){
-      player1.setPlayerMoves(index, Icons.circle, Colors.red[400]);
-      print(player1.playerMoves);
-      _isAWin(player1.playerMoves);
-      
-      if(isWin) player1.setVictory();
-     
-      casas[index] = player1;
+    if(_counter <= 9){
+      if(!player1.playerMoves.contains(index) && !player2.playerMoves.contains(index)){
+        if( _counter % 2 != 0){
+          player1.setPlayerMoves(index, Icons.circle, Colors.red[400]);
+          _isAWin(player1.playerMoves);
+              
+          if(isWin){
+            player1.setVictory();
+            winner = 'red';
+          }
+          
+          casas[index] = player1;
+
+        }else{
+          player2.setPlayerMoves(index, Icons.close, Colors.blue[400]);
+          _isAWin(player2.playerMoves);
+              
+          if(isWin){
+            player2.setVictory();
+            winner = 'blue';
+          }
+          print(isWin);
+          casas[index] = player2;
+      }
+      _counter++;
+      }
     }else{
-      player2.setPlayerMoves(index, Icons.close, Colors.blue[400]);
-      _isAWin(player2.playerMoves);
-     
-      if(isWin) player2.setVictory();
-
-      casas[index] = player2;
+      isWin = true;
+      winner = 'draw';
     }
-    _counter++;
-
   }
+      
 
 
   @action

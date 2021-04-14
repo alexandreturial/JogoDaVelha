@@ -54,6 +54,21 @@ mixin _$Tabuleiro on _TabuleiroBase, Store {
     });
   }
 
+  final _$winnerAtom = Atom(name: '_TabuleiroBase.winner');
+
+  @override
+  String get winner {
+    _$winnerAtom.reportRead();
+    return super.winner;
+  }
+
+  @override
+  set winner(String value) {
+    _$winnerAtom.reportWrite(value, super.winner, () {
+      super.winner = value;
+    });
+  }
+
   final _$isWinAtom = Atom(name: '_TabuleiroBase.isWin');
 
   @override
@@ -100,6 +115,7 @@ mixin _$Tabuleiro on _TabuleiroBase, Store {
 casas: ${casas},
 player1: ${player1},
 player2: ${player2},
+winner: ${winner},
 isWin: ${isWin}
     ''';
   }

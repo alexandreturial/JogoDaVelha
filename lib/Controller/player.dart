@@ -12,8 +12,6 @@ abstract class _PlayerBase with Store {
 
   @observable
   Color typePlayer;
-  
-  
 
   @observable
   ObservableList<int> playerMoves = ObservableList<int>();
@@ -36,6 +34,4 @@ abstract class _PlayerBase with Store {
   setVictory(){
    victory++;
   }
-
-
 }
